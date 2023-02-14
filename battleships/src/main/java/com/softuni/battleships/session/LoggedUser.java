@@ -1,7 +1,6 @@
 package com.softuni.battleships.session;
 
 import com.softuni.battleships.models.User;
-import com.softuni.battleships.models.dtos.UserLoginDTO;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -22,6 +21,10 @@ public class LoggedUser {
     public void logout(){
         this.id = null;
         this.fullName = null;
+    }
+
+    public boolean isLogged(){
+        return this.getId() != null;
     }
 
     public Long getId() {

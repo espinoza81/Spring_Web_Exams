@@ -34,6 +34,9 @@ public class AuthController {
 
     @GetMapping("/register")
     public String register(){
+        if(this.authService.isLogged()) {
+            return "home";
+        }
         return "register";
     }
 
@@ -55,6 +58,9 @@ public class AuthController {
 
     @GetMapping("/login")
     public String login(){
+        if(this.authService.isLogged()) {
+            return "home";
+        }
         return "login";
     }
 

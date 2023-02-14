@@ -86,16 +86,9 @@ public class Ship {
         this.category = category;
         return this;
     }
+
+    public long getId() {
+        return id;
+    }
+
 }
-//Name
-//The length of the values must be between 2 and 10 characters (both numbers are INCLUSIVE)
-
-//Health
-//The values should be positive numbers
-
-//Power
-//The values should be positive numbers
-
-//Created 
-//The values should not be future dates
-
