@@ -75,10 +75,10 @@
                                 th:class="${#fields.hasErrors('category')} ? 'custom-select alert-danger' : 'custom-select'"
                                 aria-describedby="categoryHelpInline">
                             <option value="" selected>Category</option>
-                            <option value="">Coffee</option>
-                            <option value="">Cake</option>
-                            <option value="">Drink</option>
-                            <option value="">Other</option>
+                            <option value="Coffee">Coffee</option>
+                            <option value="Cake">Cake</option>
+                            <option value="Drink">Drink</option>
+                            <option value="Other">Other</option>
 
                         </select>
                         <small id="categoryHelpInline" class="invalid-feedback bg-danger text-light rounded">
@@ -90,6 +90,8 @@
                     <label for="description" class="col-sm-2 col-form-label">Description</label>
                     <div class="col-sm-10">
                     <textarea
+                            th:field="*{description}"
+                            th:errorclass="is-invalid"
                             class="form-control"
                             id="description"
                               aria-describedby="descriptionHelpInline"

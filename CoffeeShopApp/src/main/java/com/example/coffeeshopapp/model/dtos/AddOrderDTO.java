@@ -19,7 +19,7 @@ public class AddOrderDTO {
     private String name;
 
     @Positive
-    @NotBlank
+    @NotNull
     private BigDecimal price;
 
     @PastOrPresent
