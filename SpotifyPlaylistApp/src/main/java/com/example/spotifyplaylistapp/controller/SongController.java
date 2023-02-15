@@ -3,6 +3,7 @@ package com.example.spotifyplaylistapp.controller;
 import com.example.spotifyplaylistapp.model.dtos.AddSongDTO;
 import com.example.spotifyplaylistapp.service.AuthService;
 import com.example.spotifyplaylistapp.service.SongService;
+import com.example.spotifyplaylistapp.service.UserService;
 import com.example.spotifyplaylistapp.util.LoggedUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -21,13 +22,16 @@ public class SongController {
     private final AuthService authService;
 
     private final LoggedUser loggedUser;
+    private final UserService userService;
 
     public SongController(SongService songService,
                           AuthService authService,
-                          LoggedUser loggedUser) {
+                          LoggedUser loggedUser,
+                          UserService userService) {
         this.songService = songService;
         this.authService = authService;
         this.loggedUser = loggedUser;
+        this.userService = userService;
     }
 
     @ModelAttribute("addSongDTO")
@@ -61,19 +65,19 @@ public class SongController {
         return "redirect:/home";
     }
 
-//    @GetMapping("song/add_playlist/{id}")
-//    String likePost(@PathVariable Long id){
-//
-//        postService.likePostWithId(id, loggedUser.getId());
-//        return "redirect:/home";
-//
-//    }
-//
-//    @GetMapping("/remove_all")
-//    String removePost(@PathVariable Long id){
-//
-//        postService.removePostById(id);
-//        return "redirect:/home";
-//
-//    }
+    @GetMapping("song/add_playlist/{id}")
+    String likePost(@PathVariable Long id){
+
+        userService.addSongToPlaylist(id, loggedUser.getId());
+        return "redirect:/home";
+
+    }
+
+    @GetMapping("/remove_all")
+    String clearUserPlaylist(){
+
+        userService.clearUserPlaylist(loggedUser.getId());
+        return "redirect:/home";
+
+    }
 }

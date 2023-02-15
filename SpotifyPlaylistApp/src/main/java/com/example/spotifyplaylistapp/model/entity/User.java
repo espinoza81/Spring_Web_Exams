@@ -29,10 +29,17 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Song> playList;
 
     public User() {
+        this.playList = new HashSet<>();
+    }
+
+    public void addSong(Song song){
+        this.playList.add(song);
+    }
+    public void clearPlaylist(){
         this.playList = new HashSet<>();
     }
 }

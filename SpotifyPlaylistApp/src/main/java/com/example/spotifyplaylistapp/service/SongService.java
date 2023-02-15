@@ -61,7 +61,6 @@ public class SongService {
                 .collect(Collectors.toList());
     }
 
-    @Transactional
     public List<SongDTO> getUserLoggedPlaylist(long loggedUserId) {
         return this.userRepository.findById(loggedUserId)
                 .orElseThrow()
@@ -70,17 +69,4 @@ public class SongService {
                 .map(SongDTO::new)
                 .collect(Collectors.toList());
     }
-//
-//    public void likePostWithId(Long postId, Long userId) {
-//        Post post = postRepository.findById(postId).orElse(null);
-//        User user = userRepository.findById(userId).orElse(null);
-//
-//        Objects.requireNonNull(post).getUserLikes().add(user);
-//
-//        postRepository.save(post);
-//    }
-//
-//    public void removePostById(Long postId) {
-//        postRepository.deleteById(postId);
-//    }
 }
