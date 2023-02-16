@@ -1,6 +1,8 @@
 package com.example.coffeeshopapp.service;
 
 import com.example.coffeeshopapp.model.dtos.AddOrderDTO;
+import com.example.coffeeshopapp.model.dtos.EmployeeWithOrderCountDTO;
+import com.example.coffeeshopapp.model.dtos.OrderDTO;
 import com.example.coffeeshopapp.model.entity.Category;
 import com.example.coffeeshopapp.model.entity.Order;
 import com.example.coffeeshopapp.model.entity.CategoryType;
@@ -12,7 +14,9 @@ import com.example.coffeeshopapp.util.LoggedUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderService {
@@ -52,38 +56,19 @@ public class OrderService {
         this.orderRepository.save(order);
     }
 
-//    public List<OrderDTO> getProductsByCategory(CategoryType categoryType) {
-//        Category category = categoryRepository.findByCategoryType(categoryType);
-//
-//        return this.orderRepository.findAllByCategoryAndUserId(category, loggedUser.getId())
-//                .stream()
-//                .map(OrderDTO::new)
-//                .collect(Collectors.toList());
-//    }
-//
-//    public List<List<OrderDTO>> getAllProductsByCategory() {
-//        List<List<OrderDTO>> productsByCategory = new ArrayList<>();
-//
-//        List<OrderDTO> food = this.getProductsByCategory(CategoryType.Food);
-//        List<OrderDTO> drink = this.getProductsByCategory(CategoryType.Drink);
-//        List<OrderDTO> household = this.getProductsByCategory(CategoryType.Household);
-//        List<OrderDTO> other = this.getProductsByCategory(CategoryType.Other);
-//
-//        productsByCategory.add(food);
-//        productsByCategory.add(drink);
-//        productsByCategory.add(household);
-//        productsByCategory.add(other);
-//
-//        return productsByCategory;
-//    }
-//
-//    @Transactional
-//    public void buyAllProduct(Long userId) {
-//        this.orderRepository.deleteAllByUserId(userId);
-//    }
-//
-//    public void buyProduct(Long productId) {
-//        this.orderRepository.deleteById(productId);
-//    }
+    public List<OrderDTO> getAllOrdersByPriceDesc() {
 
+        return this.orderRepository.findAllByOrderByPriceDesc()
+                .stream()
+                .map(OrderDTO::new)
+                .collect(Collectors.toList());
+    }
+
+    public void orderReady(Long orderId) {
+        this.orderRepository.deleteById(orderId);
+    }
+
+    public List<EmployeeWithOrderCountDTO> employeeWithOrderCount() {
+        return this.orderRepository.getEmployeeWithOrderCountDesc();
+    }
 }

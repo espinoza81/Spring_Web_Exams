@@ -11,11 +11,15 @@ public class OrderDTO {
     private long id;
     private String name;
     private BigDecimal price;
+    private String category;
+    private int neededTime;
 
     public OrderDTO(Order order) {
         this.id = order.getId();
         this.name = order.getName();
         this.price = order.getPrice();
+        this.category = order.getCategory().getName().toString();
+        this.neededTime = order.getCategory().getNeededTime();
     }
 
     @Override
