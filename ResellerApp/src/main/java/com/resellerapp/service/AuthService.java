@@ -7,14 +7,13 @@ import com.resellerapp.model.helpers.LoggedUser;
 import com.resellerapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
 import java.util.Optional;
 
 
-@Component
+@Service
 public class AuthService {
 
     private final UserRepository userRepository;
