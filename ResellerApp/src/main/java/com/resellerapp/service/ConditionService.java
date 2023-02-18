@@ -4,14 +4,13 @@ import com.resellerapp.model.entity.Condition;
 import com.resellerapp.model.enums.ConditionType;
 import com.resellerapp.repository.ConditionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-@Component
+@Service
 public class ConditionService {
     private final ConditionRepository conditionRepository;
 
