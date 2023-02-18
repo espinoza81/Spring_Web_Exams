@@ -12,7 +12,6 @@ import com.resellerapp.repository.ConditionRepository;
 import com.resellerapp.repository.OfferRepository;
 import com.resellerapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
@@ -20,7 +19,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Component
+@Service
 public class OfferService {
 
     private final UserRepository userRepository;
