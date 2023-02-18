@@ -5,13 +5,12 @@ import com.resellerapp.model.dtos.OtherUsersOffersDTO;
 import com.resellerapp.model.helpers.LoggedUser;
 import com.resellerapp.repository.OfferRepository;
 import com.resellerapp.repository.UserRepository;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Service
 public class UserService {
 
 
